@@ -1,0 +1,37 @@
+git@github.com:poglicier/TsumRx.gitplatform :ios, '10.0'
+inhibit_all_warnings!
+
+target 'Delimobil' do
+  use_frameworks!
+
+  pod 'DelimobilCore', :git => 'git@git.delimobil.ru:delitime/core-ios.git', :branch => 'dev'
+
+#   pod 'DelimobilCore', :path => '/Users/temp/Documents/work/core-ios'
+#   pod 'DelimobilCore', :path => '/Users/evsenev/Documents/core-ios'
+
+#  :path => '/Users/vshamardin/Documents/Projects/Delimobil/core-ios/'
+#  :path => '/Users/valentinsamardin/Documents/Projects/Delimobil/core-ios/'
+
+#  pod 'DelimobilCore', :path => '/Users/pavelkozlov/Developer/Delimobil/core-ios/'
+#  pod 'DelimobilCore', :path => '/Users/pkozlov/Developer/Delimobil/core-ios'
+
+  pod 'FSQCollectionViewAlignedLayout'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Performance'
+
+  pod 'RxSwift'
+  pod 'RxCocoa'
+end
+
+target 'DelimobilTests' do
+  use_frameworks!
+  pod 'Firebase'
+end
+
+post_install do |installer|
+  puts 'Patching SideMenu for backView'
+  %x(patch Pods/SideMenu/Pod/Classes/UISideMenuNavigationController.swift < Patches/sideMenuProgressNav.patch)
+  %x(patch Pods/SideMenu/Pod/Classes/SideMenuTransition.swift < Patches/sideMenuProgressTrans.patch)
+  %x(patch Pods/SideMenu/Pod/Classes/SideMenuManager.swift < Patches/sideMenuProgressManager.patch)
+end
