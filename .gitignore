@@ -1,37 +1,70 @@
-git@github.com:poglicier/TsumRx.gitplatform :ios, '10.0'
-inhibit_all_warnings!
+.DS_Store
 
-target 'Delimobil' do
-  use_frameworks!
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-  pod 'DelimobilCore', :git => 'git@git.delimobil.ru:delitime/core-ios.git', :branch => 'dev'
+## Build generated
+build/
+DerivedData/
 
-#   pod 'DelimobilCore', :path => '/Users/temp/Documents/work/core-ios'
-#   pod 'DelimobilCore', :path => '/Users/evsenev/Documents/core-ios'
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
 
-#  :path => '/Users/vshamardin/Documents/Projects/Delimobil/core-ios/'
-#  :path => '/Users/valentinsamardin/Documents/Projects/Delimobil/core-ios/'
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
 
-#  pod 'DelimobilCore', :path => '/Users/pavelkozlov/Developer/Delimobil/core-ios/'
-#  pod 'DelimobilCore', :path => '/Users/pkozlov/Developer/Delimobil/core-ios'
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
 
-  pod 'FSQCollectionViewAlignedLayout'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Performance'
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
 
-  pod 'RxSwift'
-  pod 'RxCocoa'
-end
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Packages/
+# Package.pins
+# Package.resolved
+.build/
 
-target 'DelimobilTests' do
-  use_frameworks!
-  pod 'Firebase'
-end
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
+#
+Pods/
 
-post_install do |installer|
-  puts 'Patching SideMenu for backView'
-  %x(patch Pods/SideMenu/Pod/Classes/UISideMenuNavigationController.swift < Patches/sideMenuProgressNav.patch)
-  %x(patch Pods/SideMenu/Pod/Classes/SideMenuTransition.swift < Patches/sideMenuProgressTrans.patch)
-  %x(patch Pods/SideMenu/Pod/Classes/SideMenuManager.swift < Patches/sideMenuProgressManager.patch)
-end
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+
+Carthage/Build
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/#source-control
+
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output

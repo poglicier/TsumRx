@@ -1,24 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vcd-NE-Jjl">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="xgz-Rs-hmg">
+            <objects>
+                <navigationController id="Vcd-NE-Jjl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vdo-q3-zcy">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="YPp-M4-hvY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Zd-At-QxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1388" y="3"/>
+        </scene>
+        <!--Countries List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
+                <viewController storyboardIdentifier="CountriesListViewController" id="BYZ-38-t0r" customClass="CountriesListViewController" customModule="rxFun" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="u9X-0P-qZ7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="6IT-QL-hY9" id="j7x-Dl-3Cx"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="0Rc-mj-3sf"/>
+                    <connections>
+                        <outlet property="countriesDataSource" destination="6IT-QL-hY9" id="f74-AZ-VFe"/>
+                        <outlet property="tableView" destination="u9X-0P-qZ7" id="hqI-9F-PfV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="6IT-QL-hY9" customClass="CountriesDataSource" customModule="rxFun" customModuleProvider="target"/>
             </objects>
+            <point key="canvasLocation" x="-451" y="3"/>
+        </scene>
+        <!--Country Info View Controller-->
+        <scene sceneID="33w-wq-dL3">
+            <objects>
+                <viewController storyboardIdentifier="CountryInfoViewController" id="Yc4-aU-fYk" customClass="CountryInfoViewController" customModule="rxFun" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oso-tC-H8V">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="cos-Ap-3dz">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="leC-dP-KaE" id="xt0-at-aJc"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cos-Ap-3dz" firstAttribute="top" secondItem="tQk-3s-6qY" secondAttribute="top" id="EaX-zD-g7H"/>
+                            <constraint firstItem="cos-Ap-3dz" firstAttribute="leading" secondItem="tQk-3s-6qY" secondAttribute="leading" id="LNo-CM-pcv"/>
+                            <constraint firstItem="tQk-3s-6qY" firstAttribute="trailing" secondItem="cos-Ap-3dz" secondAttribute="trailing" id="Yee-J4-8Be"/>
+                            <constraint firstAttribute="bottom" secondItem="cos-Ap-3dz" secondAttribute="bottom" id="oQQ-eP-zkj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tQk-3s-6qY"/>
+                    </view>
+                    <connections>
+                        <outlet property="infoDataSource" destination="leC-dP-KaE" id="Iih-b7-7Te"/>
+                        <outlet property="tableView" destination="cos-Ap-3dz" id="i4k-YG-HY9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tnt-bV-R0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="leC-dP-KaE" customClass="InfoDataSource" customModule="rxFun" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="490" y="3"/>
         </scene>
     </scenes>
 </document>
