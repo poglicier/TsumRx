@@ -9,6 +9,7 @@
 import RxSwift
 
 class CountriesListRouter: ToCountryInfoRouterProtocol {
+    // MARK: - Public
     weak var moduleViewController: UIViewController!
 
     func openDetailsForCountry(_ country: Country, countriesDataSet: Observable<CountriesDataSet>) {

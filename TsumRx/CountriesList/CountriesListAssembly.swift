@@ -9,7 +9,7 @@
 import UIKit
 
 class CountriesListAssembly {
-
+    // MARK: - Public
     func build() -> UIViewController {
         let view = CountriesListViewController.storyboardViewController()
         let router = CountriesListRouter()

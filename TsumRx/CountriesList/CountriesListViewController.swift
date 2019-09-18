@@ -41,7 +41,12 @@ class CountriesListViewController: UIViewController, Storyboardable {
     private func bind() {
         viewModel.isRequestActive
             .subscribe(onNext: { [weak self] isRequestActive in
-                isRequestActive ? self?.showLoader() : self?.hideLoader()
+                if isRequestActive {
+                    self?.showLoader()
+                } else {
+                    self?.tableView.refreshControl?.endRefreshing()
+                    self?.hideLoader()
+                }
             })
             .disposed(by: bag)
 
@@ -52,9 +57,6 @@ class CountriesListViewController: UIViewController, Storyboardable {
             .disposed(by: bag)
 
         viewModel.dataSet
-            .do(onNext: { [weak self] _ in
-                self?.tableView.refreshControl?.endRefreshing()
-            })
             .subscribe(onNext: { [weak self] dataSet in
                 self?.countriesDataSource.countriesDataSet = dataSet
                 self?.tableView.reloadData()
@@ -92,6 +94,9 @@ class CountriesListViewController: UIViewController, Storyboardable {
                                       message: error.localizedDescription,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
+            self?.viewModel.getData()
+        })
         present(alert, animated: true)
     }
 }

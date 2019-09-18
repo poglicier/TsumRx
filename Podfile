@@ -9,6 +9,7 @@ target 'TsumRx' do
 end
 
 target 'TsumRxTests' do
+  pod 'Moya/RxSwift'
   use_frameworks!
 end
 

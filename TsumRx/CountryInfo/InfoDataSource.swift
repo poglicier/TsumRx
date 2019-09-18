@@ -90,14 +90,12 @@ extension InfoDataSource: UITableViewDataSource {
         var res: String?
 
         switch sectionEnum {
-        case .base:
+        case .base, .count:
             break
         case .boundaries:
             res =  country.borders.count > 0 ? "Boundaries" : nil
         case .currencies:
             res = (country.currencies?.count ?? 0) > 0 ? "Currencies" : nil
-        case .count:
-            break
         }
         return res
     }

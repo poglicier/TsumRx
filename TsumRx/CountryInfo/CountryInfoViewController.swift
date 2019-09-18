@@ -78,6 +78,14 @@ extension CountryInfoViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
+        guard let sectionEnum = InfoDataSource.Section(rawValue: section) else { return 0 }
+        var res: CGFloat = 0.01
+        switch sectionEnum {
+        case .base, .boundaries, .count:
+            break
+        case .currencies:
+            res = (country.currencies?.count ?? 0) > 0 ? 44 : 0.01
+        }
+        return res
     }
 }

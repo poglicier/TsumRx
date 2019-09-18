@@ -9,6 +9,7 @@
 import RxSwift
 
 class CountryInfoAssembly {
+    // MARK: - Public
     func build(country: Country, countriesDataSet: Observable<CountriesDataSet>) -> UIViewController {
         let view = CountryInfoViewController.storyboardViewController()
         let router = CountryInfoRouter()
