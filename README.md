@@ -1,2 +1,2 @@
 # TsumRx
-Test task to demonstrate MVVM+Rx
+Test task to demonstrate MVVM+Rx and Moya
